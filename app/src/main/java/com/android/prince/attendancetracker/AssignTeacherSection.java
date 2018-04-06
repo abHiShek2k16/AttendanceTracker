@@ -1,11 +1,21 @@
 package com.android.prince.attendancetracker;
 
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -25,6 +35,9 @@ public class AssignTeacherSection extends AppCompatActivity implements AdapterVi
     ArrayList<String> paperNameArray = new ArrayList<>();
     ArrayList<String> semArray = new ArrayList<>();
 
+    DatabaseReference databaseReferenceToTeacher;
+    DatabaseReference databaseReferenceToPaper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,19 +49,37 @@ public class AssignTeacherSection extends AppCompatActivity implements AdapterVi
 
         assignTeacher = (Button)findViewById(R.id.assignTeacherButtonAtAssignTeacher);
 
-        /*
+        databaseReferenceToPaper = FirebaseDatabase.getInstance().getReference().child("PAPER");
+        databaseReferenceToTeacher = FirebaseDatabase.getInstance().getReference().child("TEACHERASSIGN");
 
-             ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(SoldActivity.this,android.R.layout.simple_expandable_list_item_1,teamName);
-             myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-             spinner.setAdapter(myAdapter);
-             spinner.setOnItemSelectedListener(SoldActivity.this);
+        new LoadTeacherName().execute(databaseReferenceToTeacher);
+        new LoadPaperName().execute(databaseReferenceToPaper);
 
-        */
+        semArray.add("2k16IT");
+        semArray.add("2k16CSE");
+        semArray.add("2k16EEE");
+        semArray.add("4");
+        semArray.add("5");
+        semArray.add("6");
+        semArray.add("7");
+        semArray.add("8");
+
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(AssignTeacherSection.this,android.R.layout.simple_expandable_list_item_1,semArray);
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sem.setAdapter(myAdapter);
+        sem.setOnItemSelectedListener(AssignTeacherSection.this);
 
         assignTeacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(teacherNameStr != null && paperNameStr != null && semStr != null){
 
+                    FirebaseDatabase.getInstance().getReference().child("TEACHERASSIGN").child(teacherNameStr).child(paperNameStr).setValue(semStr);
+                    startActivity(new Intent(AssignTeacherSection.this,AdminSection.class));
+                    finish();
+                }else {
+                    Toast.makeText(AssignTeacherSection.this,"Please choose all the details ...",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -71,5 +102,70 @@ public class AssignTeacherSection extends AppCompatActivity implements AdapterVi
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    public class LoadTeacherName extends AsyncTask<DatabaseReference,Void,Void>{
+
+        @Override
+        protected Void doInBackground(DatabaseReference... databaseReferences) {
+
+            final DatabaseReference databaseReference = databaseReferences[0];
+
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot child : dataSnapshot.getChildren()) {
+                        teacherNameArray.add(child.getKey());
+                    }
+
+                    ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(AssignTeacherSection.this,android.R.layout.simple_expandable_list_item_1,teacherNameArray);
+                    myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    teacherName.setAdapter(myAdapter);
+                    teacherName.setOnItemSelectedListener(AssignTeacherSection.this);
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+
+            });
+
+            return null;
+        }
+    }
+
+
+    public class LoadPaperName extends AsyncTask<DatabaseReference,Void,Void>{
+
+        @Override
+        protected Void doInBackground(DatabaseReference... databaseReferences) {
+
+            final DatabaseReference databaseReference = databaseReferences[0];
+
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot child : dataSnapshot.getChildren()) {
+                        paperNameArray.add(child.getKey());
+                    }
+
+                    ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(AssignTeacherSection.this,android.R.layout.simple_expandable_list_item_1,paperNameArray);
+                    myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    paper.setAdapter(myAdapter);
+                    paper.setOnItemSelectedListener(AssignTeacherSection.this);
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+
+            });
+
+            return null;
+        }
     }
 }

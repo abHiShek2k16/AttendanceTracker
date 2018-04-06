@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:orientation="horizontal"
+    android:paddingLeft="32dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:text="BE/15238/16"
+        android:id="@+id/rollNoAtItemStudentList"
+        android:layout_weight="1"/>
+
+    <CheckBox
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginRight="16dp"
+        android:id="@+id/checkboxAtItemStudentList"/>
+
+
+</LinearLayout>

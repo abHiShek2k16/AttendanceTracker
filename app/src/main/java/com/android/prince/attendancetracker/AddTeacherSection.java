@@ -1,5 +1,6 @@
 package com.android.prince.attendancetracker;
 
+import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,6 +46,11 @@ public class AddTeacherSection extends AppCompatActivity {
                 teacherPassCodeStr = teacherPassCode.getText().toString();
                 teacherCodeStr = teacherCode.getText().toString();
 
+                databaseReferenceToTeacher.child("TEACHER").child(teacherCodeStr).setValue(teacherPassCodeStr);
+                databaseReferenceToTeacher.child("TEACHERASSIGN").child(teacherCodeStr).setValue(true);
+
+                startActivity(new Intent(AddTeacherSection.this,AdminSection.class));
+                finish();
 
             }
         });

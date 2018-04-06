@@ -54,7 +54,7 @@
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Credit"
+            android:hint="branch"
             android:id="@+id/paperCreditEditTextAtAddPaperSection"/>
     </android.support.design.widget.TextInputLayout>
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.android.prince.attendancetracker.UpdateAttendance">
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerViewAtUpdateAttandance"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/datePickerAtUpdateAttandance"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="8dp"
+        android:hint="22/06/2018"
+        android:textAlignment="center"
+        android:layout_above="@id/updateButtonAtUpdateAttendance"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:id="@+id/updateButtonAtUpdateAttendance"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

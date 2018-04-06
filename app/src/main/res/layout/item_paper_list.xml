@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="84dp"
+    android:orientation="vertical"
+    android:paddingLeft="32dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Paper1"
+        android:id="@+id/paperTextViewAtItemPaperList"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="4"
+        android:id="@+id/semTextViewAtItemPaperList"/>
+
+</LinearLayout>

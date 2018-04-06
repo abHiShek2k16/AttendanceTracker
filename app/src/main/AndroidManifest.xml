@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.prince.attendancetracker">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -25,7 +27,9 @@
         <activity android:name=".AssignTeacherSection" />
         <activity android:name=".SignUpPage" />
         <activity android:name=".TeacherLogin" />
-        <activity android:name=".StudentHomePage"></activity>
+        <activity android:name=".StudentHomePage" />
+        <activity android:name=".TeacherHomePage" />
+        <activity android:name=".UpdateAttendance"></activity>
     </application>
 
 </manifest>
