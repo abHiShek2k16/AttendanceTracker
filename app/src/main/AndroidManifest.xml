@@ -9,13 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/AppTheme.nobar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AdminSection" />
+        <activity android:name=".AddTeacherSection" />
+        <activity android:name=".AddPaperSection" />
+        <activity android:name=".AssignTeacherSection" />
+        <activity android:name=".SignUpPage" />
+        <activity android:name=".TeacherLogin" />
+        <activity android:name=".StudentHomePage"></activity>
     </application>
 
 </manifest>
