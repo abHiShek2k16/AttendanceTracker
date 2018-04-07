@@ -25,6 +25,7 @@ public class AdminSection extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(AdminSection.this,AddTeacherSection.class));
+
             }
         });
 
@@ -32,6 +33,7 @@ public class AdminSection extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(AdminSection.this,AddPaperSection.class));
+
             }
         });
 
@@ -39,6 +41,7 @@ public class AdminSection extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(AdminSection.this,AssignTeacherSection.class));
+
             }
         });
     }

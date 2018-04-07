@@ -22,8 +22,6 @@ public class SignUpPage extends AppCompatActivity {
 
     Button signUp;
 
-    EditText name;
-    EditText sem;
     EditText rollNo;
     EditText password;
     EditText email;
@@ -43,9 +41,7 @@ public class SignUpPage extends AppCompatActivity {
 
         signUp = (Button)findViewById(R.id.signUpButtonAtSignUp);
 
-        name = (EditText)findViewById(R.id.nameEditTextAtSignUp);
-        sem = (EditText)findViewById(R.id.semEditTextAtSignUp);
-        rollNo = (EditText)findViewById(R.id.rollEditTextAtSignUp);
+        rollNo = (EditText)findViewById(R.id.nameEditTextAtSignUp);
         password = (EditText)findViewById(R.id.passwordEditTextAtSignUp);
         email = (EditText)findViewById(R.id.emailEditTextAtSignUp);
         branch = (EditText)findViewById(R.id.branchEditTextAtSignUp);
@@ -58,34 +54,37 @@ public class SignUpPage extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-                mFirebaseAuth.createUserWithEmailAndPassword(email.getText().toString(),password.getText().toString()).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(SignUpPage.this, "HI!! please fill all the above detail correctly...", Toast.LENGTH_LONG).show();
-                    }
-                }).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            String uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-                            DatabaseReference databaseSetRef = databaseReference.child(sem.getText().toString()).child(rollNo.getText().toString());
-                            databaseSetRef.child("EMAIL").setValue(email.getText().toString());
-                            databaseSetRef.child("NAME").setValue(name.getText().toString());
-                            databaseSetRef.child("ROLL").setValue(rollNo.getText().toString());
-                            databaseSetRef.child("SEM").setValue(sem.getText().toString());
-
-                            startActivity(new Intent(SignUpPage.this, MainActivity.class));
-                            Toast.makeText(SignUpPage.this,"Succesfully SignUp....",Toast.LENGTH_LONG).show();
-                        } else {
-
+                if(rollNo.getText().toString().equalsIgnoreCase("") && password.getText().toString().equalsIgnoreCase("") && email.getText().toString().equalsIgnoreCase("") && branch.getText().toString().equalsIgnoreCase("")){
+                    Toast.makeText(SignUpPage.this,"Please fill all the detail",Toast.LENGTH_SHORT).show();
+                }else{
+                    mFirebaseAuth.createUserWithEmailAndPassword(email.getText().toString(),password.getText().toString()).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(SignUpPage.this, "HI!! please fill all the above detail correctly...", Toast.LENGTH_LONG).show();
                         }
-                    }
-                });
+                    }).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                String uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+                                //  setting the data to assigned paper list
+                                DatabaseReference databaseReference1 = databaseReference.child("LIST").child(branch.getText().toString()).child(rollNo.getText().toString());
+                                databaseReference1.child("EMAIL").setValue(email.getText().toString());
 
+                                //  setting the data to total list of student
+                                databaseReference.child("TOTAL").child(uId).child("ROLLNO").setValue(rollNo.getText().toString());
+                                databaseReference.child("TOTAL").child(uId).child("BRANCHCODE").setValue(branch.getText().toString());
+
+                                startActivity(new Intent(SignUpPage.this, MainActivity.class));
+                                finish();
+                                Toast.makeText(SignUpPage.this,"Succesfully SignUp....",Toast.LENGTH_LONG).show();
+                            } else {
+
+                            }
+                        }
+                    });
+                }
             }
         });
     }

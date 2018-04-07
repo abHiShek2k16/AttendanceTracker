@@ -2,22 +2,42 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="44dp"
-    android:orientation="horizontal"
-    android:paddingLeft="32dp">
+    android:layout_height="54dp"
+    android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="42dp"
-        android:text="BE/15238/16"
-        android:id="@+id/rollNoAtItemStudentList"
-        android:layout_weight="1"/>
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp">
 
-    <CheckBox
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginRight="16dp"
-        android:id="@+id/checkboxAtItemStudentList"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="BE/15238/16"
+            android:id="@+id/rollNoAtItemStudentList"
+            android:layout_marginLeft="16dp"
+            android:singleLine="true"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textColor="@color/black"
+            android:paddingTop="8dp"
+            android:textSize="22sp"
+            android:layout_weight="1"/>
 
+        <CheckBox
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="16dp"
+            android:id="@+id/checkboxAtItemStudentList"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#9e9e9e"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"/>
 
 </LinearLayout>

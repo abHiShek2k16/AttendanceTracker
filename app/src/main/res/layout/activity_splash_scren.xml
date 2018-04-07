@@ -10,18 +10,20 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:background="@color/white"
         android:text="Admin"
         android:textColor="@color/black"
-        android:textSize="32sp"
-        android:fontFamily="cursive"
-        android:textStyle="italic"
         android:textAlignment="center"
-        android:layout_marginRight="32dp"
-        android:layout_marginBottom="32dp"
-        android:layout_marginLeft="32dp"
-        android:id="@+id/adminButtonAtSplash"/>
+        android:layout_marginBottom="16dp"
+        android:id="@+id/adminButtonAtSplash"
+        android:layout_above="@id/teacherLoginButtonAtSplash"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Teacher"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="16dp"
+        android:id="@+id/teacherLoginButtonAtSplash"/>
 
 </RelativeLayout>

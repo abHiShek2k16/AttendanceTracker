@@ -50,7 +50,7 @@ public class AssignTeacherSection extends AppCompatActivity implements AdapterVi
         assignTeacher = (Button)findViewById(R.id.assignTeacherButtonAtAssignTeacher);
 
         databaseReferenceToPaper = FirebaseDatabase.getInstance().getReference().child("PAPER");
-        databaseReferenceToTeacher = FirebaseDatabase.getInstance().getReference().child("TEACHERASSIGN");
+        databaseReferenceToTeacher = FirebaseDatabase.getInstance().getReference().child("TEACHER").child("ASSIGNED");
 
         new LoadTeacherName().execute(databaseReferenceToTeacher);
         new LoadPaperName().execute(databaseReferenceToPaper);
@@ -58,11 +58,10 @@ public class AssignTeacherSection extends AppCompatActivity implements AdapterVi
         semArray.add("2k16IT");
         semArray.add("2k16CSE");
         semArray.add("2k16EEE");
-        semArray.add("4");
-        semArray.add("5");
-        semArray.add("6");
-        semArray.add("7");
-        semArray.add("8");
+        semArray.add("2k16ECE");
+        semArray.add("2k16MECH");
+        semArray.add("2k16CVL");
+        semArray.add("2k16PROD");
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(AssignTeacherSection.this,android.R.layout.simple_expandable_list_item_1,semArray);
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -74,7 +73,7 @@ public class AssignTeacherSection extends AppCompatActivity implements AdapterVi
             public void onClick(View view) {
                 if(teacherNameStr != null && paperNameStr != null && semStr != null){
 
-                    FirebaseDatabase.getInstance().getReference().child("TEACHERASSIGN").child(teacherNameStr).child(paperNameStr).setValue(semStr);
+                    FirebaseDatabase.getInstance().getReference().child("TEACHER").child("ASSIGNED").child(teacherNameStr).child(paperNameStr).setValue(semStr);
                     startActivity(new Intent(AssignTeacherSection.this,AdminSection.class));
                     finish();
                 }else {

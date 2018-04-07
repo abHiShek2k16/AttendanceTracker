@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,8 +24,7 @@ public class MainActivity extends AppCompatActivity {
     EditText password;
 
     Button login;
-    Button signUp;
-    Button teacher;
+    TextView signUp;
 
     private FirebaseAuth mAuth;
 
@@ -37,17 +37,9 @@ public class MainActivity extends AppCompatActivity {
         password = (EditText)findViewById(R.id.passwordAtActivityMain);
 
         login = (Button)findViewById(R.id.loginButtonAtActivityMain);
-        signUp = (Button)findViewById(R.id.signUpButtonAtActivityMain);
-        teacher = (Button)findViewById(R.id.teacherLoginButtonAtActivityMain);
+        signUp = (TextView) findViewById(R.id.signUpButtonAtActivityMain);
 
         mAuth = FirebaseAuth.getInstance();
-
-        teacher.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,TeacherLogin.class));
-            }
-        });
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,23 +51,29 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mAuth.signInWithEmailAndPassword(userName.getText().toString(),password.getText().toString()).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(MainActivity.this,"Enter correct Detail for Continue !!!",Toast.LENGTH_LONG).show();
-                    }
-                }).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                           startActivity(new Intent(MainActivity.this,StudentHomePage.class));
-                           finish();
-                        }
-                        else{
-                            Toast.makeText(MainActivity.this,"Login Failed ...!!!",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+               if(!(userName.getText().toString().isEmpty() && password.getText().toString().isEmpty())){
+
+                   mAuth.signInWithEmailAndPassword(userName.getText().toString(),password.getText().toString()).addOnFailureListener(new OnFailureListener() {
+                       @Override
+                       public void onFailure(@NonNull Exception e) {
+                           Toast.makeText(MainActivity.this,"Enter correct Detail to Continue !!!",Toast.LENGTH_LONG).show();
+                       }
+                   }).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                       @Override
+                       public void onComplete(@NonNull Task<AuthResult> task) {
+                           if(task.isSuccessful()){
+                               startActivity(new Intent(MainActivity.this,StudentHomePage.class));
+                               finish();
+                           }
+                           else{
+                               Toast.makeText(MainActivity.this,"Incorrect password ...!!!",Toast.LENGTH_SHORT).show();
+                           }
+                       }
+                   });
+
+               }else{
+                   Toast.makeText(MainActivity.this,"Please fill all the detail ...",Toast.LENGTH_SHORT).show();
+               }
             }
         });
     }

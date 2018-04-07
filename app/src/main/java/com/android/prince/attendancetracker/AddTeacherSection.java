@@ -21,7 +21,6 @@ public class AddTeacherSection extends AppCompatActivity {
     Button addTeacher;
 
     String teacherNameStr;
-    String teacherCodeStr;
     String teacherPassCodeStr;
 
     DatabaseReference databaseReferenceToTeacher;
@@ -32,22 +31,20 @@ public class AddTeacherSection extends AppCompatActivity {
         setContentView(R.layout.activity_add_teacher_section);
 
         teacherName = (TextInputEditText)findViewById(R.id.teacherNameEditTextAtAddTeacherSection);
-        teacherCode = (TextInputEditText)findViewById(R.id.teacherCodeEditTextAtAddTeacherSection);
         teacherPassCode = (TextInputEditText)findViewById(R.id.passCodeEditTextAtAddTeacherSection);
 
         addTeacher = (Button)findViewById(R.id.addTeacherButtonAtTeacherSection);
 
-        databaseReferenceToTeacher = FirebaseDatabase.getInstance().getReference();
+        databaseReferenceToTeacher = FirebaseDatabase.getInstance().getReference().child("TEACHER");
 
         addTeacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 teacherNameStr = teacherName.getText().toString();
                 teacherPassCodeStr = teacherPassCode.getText().toString();
-                teacherCodeStr = teacherCode.getText().toString();
 
-                databaseReferenceToTeacher.child("TEACHER").child(teacherCodeStr).setValue(teacherPassCodeStr);
-                databaseReferenceToTeacher.child("TEACHERASSIGN").child(teacherCodeStr).setValue(true);
+                databaseReferenceToTeacher.child("TOTAL").child(teacherPassCodeStr).setValue(teacherNameStr);
+                databaseReferenceToTeacher.child("ASSIGNED").child(teacherNameStr).setValue(true);
 
                 startActivity(new Intent(AddTeacherSection.this,AdminSection.class));
                 finish();

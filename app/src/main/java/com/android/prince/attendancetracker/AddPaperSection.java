@@ -27,8 +27,6 @@ public class AddPaperSection extends AppCompatActivity {
     Button addPaper;
 
     String paperNameStr;
-    String paperCodeStr;
-    String paperCreditStr;
     String paperSemStr;
 
     DatabaseReference databaseReferenceToStuduent;
@@ -39,8 +37,6 @@ public class AddPaperSection extends AppCompatActivity {
         setContentView(R.layout.activity_add_paper_section);
 
         paperName = (TextInputEditText)findViewById(R.id.paperNameEditTextAtAddPaperSection);
-        paperCode = (TextInputEditText)findViewById(R.id.paperCodeEditTextAtAddPaperSection);
-        paperCredit = (TextInputEditText)findViewById(R.id.paperCreditEditTextAtAddPaperSection);
         paperSem = (TextInputEditText)findViewById(R.id.semEditTextAtAddPaperSection);
 
         addPaper = (Button)findViewById(R.id.addPaperButtonAtAdminSection);
@@ -49,18 +45,13 @@ public class AddPaperSection extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 paperNameStr = paperName.getText().toString();
-                paperCodeStr = paperCode.getText().toString();
                 paperSemStr = paperSem.getText().toString();
-                paperCreditStr = paperCredit.getText().toString();
 
-                databaseReferenceToStuduent = FirebaseDatabase.getInstance().getReference().child("STUDENT").child(paperSemStr);
-                FirebaseDatabase.getInstance().getReference("PAPER").child(paperNameStr).setValue(true);
-                Log.d("hello","1");
+                databaseReferenceToStuduent = FirebaseDatabase.getInstance().getReference().child("STUDENT").child("LIST").child(paperSemStr);
+
+                FirebaseDatabase.getInstance().getReference("PAPER").child(paperNameStr).setValue(paperSemStr);
+
                 new LoadStudent().execute(databaseReferenceToStuduent);
-                Log.d("hello","2");
-
-                FirebaseDatabase.getInstance().getReference("hello").child("ok").setValue(true);
-
             }
         });
     }
@@ -77,9 +68,7 @@ public class AddPaperSection extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot child : dataSnapshot.getChildren()) {
                         databaseReference.child(child.getKey()).child("REGISTEREDPAPER").child(paperNameStr).setValue(true);
-                        Log.d("hello","3");
                     }
-                    Log.d("hello","4");
                     startActivity(new Intent(AddPaperSection.this,AdminSection.class));
                     finish();
                 }

@@ -25,9 +25,9 @@ import java.util.ArrayList;
 public class UpdateAttendance extends AppCompatActivity {
 
     String sem;
-    String subject;
     String dateStr;
-    String uId;
+    String name;
+    String subject;
 
 
     EditText date;
@@ -49,15 +49,15 @@ public class UpdateAttendance extends AppCompatActivity {
         update.setEnabled(false);
 
         Intent intent = getIntent();
-        sem = intent.getStringExtra("SEM");
+        sem = intent.getStringExtra("BRANCH");
+        name = intent.getStringExtra("NAME");
         subject = intent.getStringExtra("SUBJECT");
-        uId = intent.getStringExtra("UID");
 
         for(int i=0;i<60;i++){
             flag[i] = false;
         }
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("STUDENT").child(sem);
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("STUDENT").child("LIST").child(sem);
         new LoadRoll().execute(databaseReference);
 
         date = (EditText)findViewById(R.id.datePickerAtUpdateAttandance);
@@ -73,7 +73,7 @@ public class UpdateAttendance extends AppCompatActivity {
                     databaseReference.child(rollNo.get(i)).child("REGISTEREDPAPER").child(subject).child(dateStr).setValue(flag[i]);
                 }
                 Intent intent1 = new Intent(UpdateAttendance.this,TeacherHomePage.class);
-                intent1.putExtra("UID",uId);
+                intent1.putExtra("NAME",name);
                 startActivity(intent1);
                 finish();
             }

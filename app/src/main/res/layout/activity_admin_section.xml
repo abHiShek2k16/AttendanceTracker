@@ -4,26 +4,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.android.prince.attendancetracker.AdminSection">
+    tools:context="com.android.prince.attendancetracker.AdminSection"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_navigate_before"
+            android:scaleType="centerInside"
+            android:layout_marginLeft="16dp"
+            android:id="@+id/backButtonAtActivityMain"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textAlignment="textEnd"
+            android:text="Admin Section"
+            android:textColor="#cf3c3c"
+            android:textSize="16sp"
+            android:layout_marginRight="12dp"
+            android:paddingTop="12dp"
+            android:fontFamily="sans-serif-smallcaps"/>
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="#cf3c3c"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
+
+    </LinearLayout>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add Teacher"
-        android:id="@+id/addTeacherButtonAtAdminSection" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Assign Teacher"
-        android:id="@+id/assignClassButtonAtAdminSection"
-        android:layout_below="@id/addTeacherButtonAtAdminSection"/>
+        android:id="@+id/addTeacherButtonAtAdminSection"
+        android:layout_above="@id/addPaperButtonAtAdminSection"
+        android:layout_marginBottom="32dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginLeft="22dp"
+        android:background="@drawable/backcolor"
+        android:textAllCaps="true"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="22sp"
+        android:textColor="@color/white"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add Paper"
         android:id="@+id/addPaperButtonAtAdminSection"
-        android:layout_below="@id/assignClassButtonAtAdminSection"/>
+        android:layout_above="@id/assignClassButtonAtAdminSection"
+        android:layout_marginBottom="32dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginLeft="22dp"
+        android:background="@drawable/backcolor"
+        android:textAllCaps="true"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="22sp"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Assign Teacher"
+        android:id="@+id/assignClassButtonAtAdminSection"
+        android:layout_above="@id/imageAtAdminSection"
+        android:layout_marginBottom="74dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginLeft="22dp"
+        android:background="@drawable/backcolor"
+        android:textAllCaps="true"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="22sp"
+        android:textColor="@color/white"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:src="@drawable/red"
+        android:layout_alignParentBottom="true"
+        android:scaleType="fitXY"
+        android:id="@+id/imageAtAdminSection" />
 
 </RelativeLayout>

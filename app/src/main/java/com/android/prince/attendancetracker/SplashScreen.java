@@ -7,20 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashScreen extends AppCompatActivity {
 
     boolean checkAdminclick = false;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_scren);
-
-
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -28,8 +23,6 @@ public class SplashScreen extends AppCompatActivity {
                 if(!checkAdminclick) {
                         startActivity(new Intent(SplashScreen.this, MainActivity.class));
                         finish();
-
-
                 }
             }
         },5000);
@@ -40,6 +33,16 @@ public class SplashScreen extends AppCompatActivity {
             public void onClick(View view) {
                 checkAdminclick = true;
                 startActivity(new Intent(SplashScreen.this,AdminSection.class));
+                finish();
+            }
+        });
+
+        Button teacher =  teacher = (Button)findViewById(R.id.teacherLoginButtonAtSplash);
+        teacher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkAdminclick = true;
+                startActivity(new Intent(SplashScreen.this,TeacherLogin.class));
                 finish();
             }
         });

@@ -1,21 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="84dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:paddingLeft="32dp">
+    android:background="@color/white">
 
-    <TextView
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Paper1"
-        android:id="@+id/paperTextViewAtItemPaperList"/>
+        android:layout_height="158dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="16dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="4"
-        android:id="@+id/semTextViewAtItemPaperList"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Discrete Mathmetics"
+                android:id="@+id/paperTextViewAtItemPaperList"
+                android:layout_marginLeft="16dp"
+                android:singleLine="true"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="22sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="IT2K16"
+                android:id="@+id/semTextViewAtItemPaperList"
+                android:paddingLeft="16dp"
+                android:background="@color/colorPrimary"
+                android:layout_alignParentBottom="true"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"
+                android:textAlignment="textEnd"
+                android:paddingRight="32dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:textAllCaps="true"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>

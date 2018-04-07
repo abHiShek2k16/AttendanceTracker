@@ -4,30 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.android.prince.attendancetracker.UpdateAttendance">
+    tools:context="com.android.prince.attendancetracker.UpdateAttendance"
+    android:background="@color/white">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/colorPrimary"
+        android:layout_marginBottom="16dp"
+        android:id="@+id/ToolBarAtUpdate">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:text="Update Attendance"
+            android:paddingTop="8dp"
+            android:textStyle="normal"
+            android:textSize="22sp"
+            android:fontFamily="sans-serif"
+            android:textAllCaps="false" />
+
+    </android.support.v7.widget.Toolbar>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recyclerViewAtUpdateAttandance"/>
+        android:id="@+id/recyclerViewAtUpdateAttandance"
+        android:layout_below="@id/ToolBarAtUpdate"/>
 
     <EditText
-        android:layout_width="match_parent"
+        android:layout_width="128dp"
         android:layout_height="wrap_content"
         android:id="@+id/datePickerAtUpdateAttandance"
         android:layout_marginBottom="16dp"
-        android:layout_marginRight="48dp"
-        android:layout_marginLeft="48dp"
         android:layout_marginTop="8dp"
         android:hint="22/06/2018"
         android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/white"
+        android:cursorVisible="false"
+        android:textColorHint="#9e9e9e"
+        android:textColor="@color/black"
+        android:fontFamily="serif"
         android:layout_above="@id/updateButtonAtUpdateAttendance"/>
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="44dp"
         android:text="Update"
         android:id="@+id/updateButtonAtUpdateAttendance"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        android:textAllCaps="true"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="22sp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:textStyle="normal" />
 
 </RelativeLayout>

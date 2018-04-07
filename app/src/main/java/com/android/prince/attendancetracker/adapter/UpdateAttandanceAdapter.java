@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.android.prince.attendancetracker.R;
@@ -38,9 +39,7 @@ public class UpdateAttandanceAdapter extends RecyclerView.Adapter<UpdateAttandan
     public void onBindViewHolder(UpdateAttendanceCustomViewHolder holder, int position) {
 
         String rollStr = rollNo.get(position);
-
         holder.roll.setText(rollStr);
-
     }
 
     @Override
@@ -51,11 +50,13 @@ public class UpdateAttandanceAdapter extends RecyclerView.Adapter<UpdateAttandan
     public class UpdateAttendanceCustomViewHolder extends RecyclerView.ViewHolder {
 
         private TextView roll;
+        private CheckBox checkBox;
 
 
         public UpdateAttendanceCustomViewHolder(View itemView) {
             super(itemView);
             roll = (TextView) itemView.findViewById(R.id.rollNoAtItemStudentList);
+            checkBox = (CheckBox)itemView.findViewById(R.id.checkboxAtItemStudentList);
         }
     }
 }

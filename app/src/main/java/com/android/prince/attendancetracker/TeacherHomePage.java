@@ -27,7 +27,7 @@ public class TeacherHomePage extends AppCompatActivity {
 
     DatabaseReference databaseReference;
 
-    String userid;
+    String userNameStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class TeacherHomePage extends AppCompatActivity {
 
         try{
             Intent intent = getIntent();
-            userid = intent.getStringExtra("UID");
+            userNameStr = intent.getStringExtra("NAME");
         }catch (Exception e){
 
         }
@@ -44,16 +44,16 @@ public class TeacherHomePage extends AppCompatActivity {
         recyclerView = (RecyclerView)findViewById(R.id.recyclerViewAtTeacherHomePage);
         recyclerView.setLayoutManager(new LinearLayoutManager(TeacherHomePage.this));
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("TEACHERASSIGN").child(userid);
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("TEACHER").child("ASSIGNED").child(userNameStr);
         new LoadNameAndSem().execute(databaseReference);
 
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(TeacherHomePage.this, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         Intent intent = new Intent(TeacherHomePage.this,UpdateAttendance.class);
+                        intent.putExtra("BRANCH",semArray.get(position));
                         intent.putExtra("SUBJECT",nameArray.get(position));
-                        intent.putExtra("SEM",semArray.get(position));
-                        intent.putExtra("UID",userid);
+                        intent.putExtra("NAME",userNameStr);
                         startActivity(intent);
                         finish();
                     }
@@ -82,8 +82,8 @@ public class TeacherHomePage extends AppCompatActivity {
                     }
 
                     if(nameArray != null && semArray != null) {
-                        TeacherPaperAdapter auxionAdapter = new TeacherPaperAdapter(TeacherHomePage.this, nameArray, semArray);
-                        recyclerView.setAdapter(auxionAdapter);
+                        TeacherPaperAdapter adapter = new TeacherPaperAdapter(TeacherHomePage.this, nameArray, semArray);
+                        recyclerView.setAdapter(adapter);
                     }
 
                 }

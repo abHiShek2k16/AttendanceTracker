@@ -20,7 +20,6 @@ import java.util.ArrayList;
 public class TeacherLogin extends AppCompatActivity {
 
     EditText userCode;
-    EditText passCode;
 
     Button login;
 
@@ -29,12 +28,7 @@ public class TeacherLogin extends AppCompatActivity {
     boolean flag = false;
 
     String userCodeStr;
-    String passCodeStr;
-
-   /*
-    ArrayList<String> userCodeArray = new ArrayList<>();
-    ArrayList<String> userPassCodeArray = new ArrayList<>();
-    */
+    String userNameStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,18 +36,19 @@ public class TeacherLogin extends AppCompatActivity {
         setContentView(R.layout.activity_teacher_login);
 
         userCode = (EditText)findViewById(R.id.userNameAtTeacherLogin);
-        passCode = (EditText)findViewById(R.id.passwordAtTeacherLogin);
-
         login = (Button)findViewById(R.id.loginButtonAtTeacherLogin);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("TEACHER");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("TEACHER").child("TOTAL");
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 userCodeStr = userCode.getText().toString();
-                passCodeStr = passCode.getText().toString();
-                new MatchUser().execute(databaseReference);
+                if(userCodeStr.equalsIgnoreCase("")){
+                    Toast.makeText(TeacherLogin.this,"Please Enter the code",Toast.LENGTH_SHORT).show();
+                }else{
+                    new MatchUser().execute(databaseReference);
+                }
             }
         });
     }
@@ -69,16 +64,15 @@ public class TeacherLogin extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot child : dataSnapshot.getChildren()) {
                        if(child.getKey().equalsIgnoreCase(userCodeStr)){
-                           if(child.getValue().toString().equalsIgnoreCase(passCodeStr));{
+                               userNameStr = child.getValue().toString();
                                flag = true;
                                break;
-                           }
                        }
                     }
 
                     if(flag){
                         Intent intent = new Intent(TeacherLogin.this,TeacherHomePage.class);
-                        intent.putExtra("UID",userCodeStr);
+                        intent.putExtra("NAME",userNameStr);
                         startActivity(intent);
                         finish();
                     }else {
