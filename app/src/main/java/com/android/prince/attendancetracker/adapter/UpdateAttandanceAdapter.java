@@ -1,11 +1,14 @@
 package com.android.prince.attendancetracker.adapter;
 
 import android.content.Context;
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.prince.attendancetracker.R;
@@ -36,10 +39,20 @@ public class UpdateAttandanceAdapter extends RecyclerView.Adapter<UpdateAttandan
     }
 
     @Override
-    public void onBindViewHolder(UpdateAttendanceCustomViewHolder holder, int position) {
+    public void onBindViewHolder(final UpdateAttendanceCustomViewHolder holder, int position) {
 
         String rollStr = rollNo.get(position);
         holder.roll.setText(rollStr);
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(holder.imageView.getVisibility() == View.INVISIBLE){
+                    holder.imageView.setVisibility(View.VISIBLE);
+                }else {
+                    holder.imageView.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
     }
 
     @Override
@@ -50,13 +63,15 @@ public class UpdateAttandanceAdapter extends RecyclerView.Adapter<UpdateAttandan
     public class UpdateAttendanceCustomViewHolder extends RecyclerView.ViewHolder {
 
         private TextView roll;
-        private CheckBox checkBox;
+        private ImageView imageView;
+        private LinearLayout layout;
 
 
         public UpdateAttendanceCustomViewHolder(View itemView) {
             super(itemView);
             roll = (TextView) itemView.findViewById(R.id.rollNoAtItemStudentList);
-            checkBox = (CheckBox)itemView.findViewById(R.id.checkboxAtItemStudentList);
+            imageView = (ImageView) itemView.findViewById(R.id.imageViewAtStudentList);
+            layout = (LinearLayout)itemView.findViewById(R.id.layoutAttudentList);
         }
     }
 }

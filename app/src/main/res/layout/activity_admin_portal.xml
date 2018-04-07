@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.android.prince.attendancetracker.AssignTeacherSection"
+    tools:context="com.android.prince.attendancetracker.AdminPortal"
     android:background="@color/colorPrimary">
 
     <LinearLayout
@@ -26,7 +26,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textAlignment="textEnd"
-            android:text="Assign Teacher"
+            android:text="Admin Portal"
             android:textColor="@color/white"
             android:textSize="22sp"
             android:layout_marginRight="22dp"
@@ -44,53 +44,35 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="104dp"
-        android:layout_above="@id/teacherNameSpinnerAtAssignTeacherSection"
-        android:layout_marginBottom="54dp"
+        android:layout_height="124dp"
+        android:layout_above="@id/teacherLoginButtonAtSplash"
         android:src="@drawable/iconwhite"
+        android:layout_marginBottom="94dp"
         android:scaleType="fitCenter"/>
-
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/teacherNameSpinnerAtAssignTeacherSection"
-        android:layout_above="@id/semSpinnerAtAssignTeacherSection"
-        android:layout_marginBottom="22dp"
-        android:layout_marginRight="22dp"
-        android:layout_marginLeft="22dp"
-        android:paddingLeft="44dp"
-        android:backgroundTint="@color/white"/>
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/semSpinnerAtAssignTeacherSection"
-        android:layout_above="@id/paperSpinnerAtAssignTeacherSection"
-        android:layout_marginBottom="22dp"
-        android:layout_marginRight="22dp"
-        android:layout_marginLeft="22dp"
-        android:paddingLeft="44dp"
-        android:backgroundTint="@color/white"/>
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/paperSpinnerAtAssignTeacherSection"
-        android:layout_above="@id/assignTeacherButtonAtAssignTeacher"
-        android:layout_marginBottom="44dp"
-        android:layout_marginRight="22dp"
-        android:layout_marginLeft="22dp"
-        android:paddingLeft="44dp"
-        android:backgroundTint="@color/white"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Assign"
-        android:layout_above="@id/imageAtAssignTeacher"
-        android:id="@+id/assignTeacherButtonAtAssignTeacher"
-        android:layout_marginBottom="32dp"
+        android:id="@+id/teacherLoginButtonAtSplash"
+        android:text="TEacher"
+        android:layout_above="@id/adminButtonAtSplash"
+        android:layout_marginBottom="22dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginLeft="22dp"
+        android:background="@drawable/backcolorwhite"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="22sp"
+        android:textAllCaps="true"
+        android:textAlignment="center"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/adminButtonAtSplash"
+        android:text="Admin"
+        android:layout_above="@id/imageATAdminPortal"
+        android:layout_marginBottom="48dp"
         android:layout_marginRight="22dp"
         android:layout_marginLeft="22dp"
         android:background="@drawable/backcolorwhite"
@@ -102,9 +84,10 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="74dp"
-        android:src="@drawable/white"
+        android:layout_height="84dp"
         android:layout_alignParentBottom="true"
+        android:src="@drawable/white"
         android:scaleType="fitXY"
-        android:id="@+id/imageAtAssignTeacher" />
+        android:id="@+id/imageATAdminPortal"/>
+
 </RelativeLayout>

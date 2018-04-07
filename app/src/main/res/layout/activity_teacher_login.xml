@@ -42,6 +42,14 @@
 
     </LinearLayout>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:layout_above="@id/userNameAtTeacherLogin"
+        android:layout_marginBottom="84dp"
+        android:src="@drawable/icon"
+        android:scaleType="fitCenter"/>
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="64dp"

@@ -3,6 +3,7 @@
     package="com.android.prince.attendancetracker">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -11,11 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity
-            android:name=".MainActivity"
-            android:theme="@style/AppTheme.nobar" />
-
         <activity
             android:name=".SplashScreen"
             android:theme="@style/AppTheme.nobar">
@@ -25,46 +21,41 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".AdminSection"
             android:theme="@style/AppTheme.nobar" />
-
         <activity
             android:name=".AddTeacherSection"
             android:theme="@style/AppTheme.nobar" />
-
         <activity
             android:name=".AddPaperSection"
             android:theme="@style/AppTheme.nobar" />
-
         <activity
             android:name=".AssignTeacherSection"
             android:theme="@style/AppTheme.nobar" />
-
+        <activity
+            android:name=".TeacherLogin"
+            android:theme="@style/AppTheme.nobar" />
+        <activity
+            android:name=".TeacherHomePage"
+            android:theme="@style/AppTheme.nobar" />
+        <activity
+            android:name=".UpdateAttendance"
+            android:theme="@style/AppTheme.nobar" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.nobar" />
         <activity
             android:name=".SignUpPage"
             android:theme="@style/AppTheme.nobar"
             android:windowSoftInputMode="adjustPan" />
-
-        <activity
-            android:name=".TeacherLogin"
-            android:theme="@style/AppTheme.nobar" />
-
         <activity
             android:name=".StudentHomePage"
             android:theme="@style/AppTheme.nobar" />
-
         <activity
-            android:name=".TeacherHomePage"
+            android:name=".ShowAttendance"
             android:theme="@style/AppTheme.nobar" />
-
-        <activity
-            android:name=".UpdateAttendance"
-            android:theme="@style/AppTheme.nobar" />
-
-        <activity android:name=".ShowAttendance"
-            android:theme="@style/AppTheme.nobar"/>
+        <activity android:name=".AdminPortal"></activity>
     </application>
 
 </manifest>
