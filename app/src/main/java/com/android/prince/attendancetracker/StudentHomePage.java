@@ -17,6 +17,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.prince.attendancetracker.adapter.StudentAttendanceAdapter;
@@ -47,7 +48,7 @@ public class StudentHomePage extends AppCompatActivity {
     int count = 0;
 
     RecyclerView recyclerView;
-
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,8 @@ public class StudentHomePage extends AppCompatActivity {
         uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         databaseReferenceToStudentDetail = FirebaseDatabase.getInstance().getReference().child("STUDENT").child("TOTAL").child(uId);
         new LoadStudentDetail().execute(databaseReferenceToStudentDetail);
+
+        progressBar = (ProgressBar)findViewById(R.id.progressBarAtStudentHomePage);
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerViewAtStudentHomePage);
         recyclerView.setLayoutManager(new LinearLayoutManager(StudentHomePage.this));
@@ -173,6 +176,7 @@ public class StudentHomePage extends AppCompatActivity {
 
                     StudentAttendanceAdapter adapter = new StudentAttendanceAdapter(StudentHomePage.this,myPaper,percent,image);
                     recyclerView.setAdapter(adapter);
+                    progressBar.setVisibility(View.GONE);
                 }
 
                 @Override

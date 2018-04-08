@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.prince.attendancetracker.adapter.TeacherPaperAdapter;
@@ -34,7 +36,7 @@ public class UpdateAttendance extends AppCompatActivity {
     String subject;
 
 
-    EditText date;
+    TextView date;
     Button update;
     RecyclerView recyclerView;
 
@@ -47,6 +49,8 @@ public class UpdateAttendance extends AppCompatActivity {
 
     ImageView attendance;
 
+    ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +59,8 @@ public class UpdateAttendance extends AppCompatActivity {
         update = (Button)findViewById(R.id.updateButtonAtUpdateAttendance);
 
         update.setEnabled(false);
+
+        progressBar = (ProgressBar)findViewById(R.id.progressBarAtUpdateAttendance);
 
         Intent intent = getIntent();
         sem = intent.getStringExtra("BRANCH");
@@ -68,7 +74,7 @@ public class UpdateAttendance extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference().child("STUDENT").child("LIST").child(sem);
         new LoadRoll().execute(databaseReference);
 
-        date = (EditText)findViewById(R.id.datePickerAtUpdateAttandance);
+        date = (TextView) findViewById(R.id.datePickerAtUpdateAttandance);
         update = (Button)findViewById(R.id.updateButtonAtUpdateAttendance);
         recyclerView = (RecyclerView)findViewById(R.id.recyclerViewAtUpdateAttandance);
         recyclerView.setLayoutManager(new LinearLayoutManager(UpdateAttendance.this));
@@ -154,6 +160,7 @@ public class UpdateAttendance extends AppCompatActivity {
                     recyclerView.setAdapter(updateAdapter);
 
                     update.setEnabled(true);
+                    progressBar.setVisibility(View.GONE);
                 }
 
                 @Override

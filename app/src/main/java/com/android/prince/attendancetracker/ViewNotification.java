@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.android.prince.attendancetracker.adapter.NotificationAdapter;
 import com.android.prince.attendancetracker.adapter.StudentAttendanceAdapter;
@@ -27,10 +29,14 @@ public class ViewNotification extends AppCompatActivity {
     private ArrayList<String> date = new ArrayList<>();
     private ArrayList<String> notice = new ArrayList<>();
 
+    ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_notification);
+
+        progressBar = (ProgressBar)findViewById(R.id.progressBarAtViewNotification);
 
         branchCode = getIntent().getStringExtra("BRANCH");
         databaseReference = FirebaseDatabase.getInstance().getReference().child("NOTIFICATION").child(branchCode);
@@ -54,7 +60,8 @@ public class ViewNotification extends AppCompatActivity {
                        date.add(child.getKey());
                     }
 
-                    NotificationAdapter adapter = new NotificationAdapter(ViewNotification.this,notice,date);
+                    progressBar.setVisibility(View.GONE);
+                    NotificationAdapter adapter = new NotificationAdapter(ViewNotification.this,date,notice);
                     recyclerView.setAdapter(adapter);
                 }
 

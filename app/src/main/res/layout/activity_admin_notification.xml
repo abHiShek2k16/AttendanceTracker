@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:orientation="horizontal"
-        android:layout_marginBottom="16dp">
+        android:layout_marginBottom="16dp"
+        android:id="@+id/useless8">
 
         <ImageView
             android:layout_width="32dp"
@@ -46,7 +47,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/semSpinnerAtAdminNotification"
-        android:layout_above="@id/notificationAtAdminNotification"
+        android:layout_below="@id/useless8"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="22dp"
         android:layout_marginRight="22dp"
         android:layout_marginLeft="22dp"
@@ -64,13 +66,14 @@
         android:textColorHint="#9e9e9e"
         android:cursorVisible="false"
         android:id="@+id/notificationAtAdminNotification"
-        android:layout_above="@id/sendButtonAtAdminNotification"
+        android:layout_below="@id/semSpinnerAtAdminNotification"
+        android:layout_marginTop="52dp"
         android:ellipsize="start"
         android:layout_marginBottom="32dp"
         android:textAlignment="textStart"
         android:textColor="@color/black"/>
 
-    <Button
+    <ImageButton
         android:layout_width="74dp"
         android:layout_height="74dp"
         android:layout_alignParentRight="true"
@@ -78,8 +81,10 @@
         android:layout_marginBottom="16dp"
         android:layout_marginRight="32dp"
         android:id="@+id/sendButtonAtAdminNotification"
-        android:background="@drawable/ic_send"
-        android:scaleType="fitXY"/>
+        android:background="@drawable/whitecircle"
+        android:src="@drawable/ic_send"
+        android:paddingLeft="8dp"
+        android:scaleType="fitXY" />
 
     <ImageView
         android:layout_width="match_parent"

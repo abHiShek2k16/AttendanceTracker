@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import com.google.firebase.database.DatabaseReference;
@@ -19,7 +20,7 @@ import java.util.Calendar;
 
 public class AdminNotification extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    Button send;
+    ImageButton send;
     EditText message;
     Spinner selectBranch;
 
@@ -45,19 +46,18 @@ public class AdminNotification extends AppCompatActivity implements AdapterView.
             name = intent.getStringExtra("NAME");
         }
 
-        send = (Button)findViewById(R.id.sendButtonAtAdminNotification);
+        send = (ImageButton)findViewById(R.id.sendButtonAtAdminNotification);
         message = (EditText)findViewById(R.id.notificationAtAdminNotification);
         selectBranch = (Spinner)findViewById(R.id.semSpinnerAtAdminNotification);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("NOTIFICATION").child(branchSelected);
 
-        semArray.add("2k16IT");
-        semArray.add("2k16CSE");
-        semArray.add("2k16EEE");
-        semArray.add("2k16ECE");
-        semArray.add("2k16MECH");
-        semArray.add("2k16CVL");
-        semArray.add("2k16PROD");
+        semArray.add("2K16IT");
+        semArray.add("2K16CSE");
+        semArray.add("2K16EEE");
+        semArray.add("2K16ECE");
+        semArray.add("2K16MECH");
+        semArray.add("2K16CVL");
+        semArray.add("2K16PROD");
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(AdminNotification.this,android.R.layout.simple_expandable_list_item_1,semArray);
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -72,6 +72,7 @@ public class AdminNotification extends AppCompatActivity implements AdapterView.
                 SimpleDateFormat mdformat = new SimpleDateFormat("dd_MM_yyyy");
                 date = mdformat.format(calendar.getTime());
 
+                databaseReference = FirebaseDatabase.getInstance().getReference().child("NOTIFICATION").child(branchSelected);
                 databaseReference.child(date).setValue(message.getText().toString());
 
                 if(flag.equalsIgnoreCase("1")){

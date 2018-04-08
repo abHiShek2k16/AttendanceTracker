@@ -64,8 +64,10 @@
         <activity
             android:name=".TeacherAutomatic"
             android:theme="@style/AppTheme.nobar" />
-        <activity android:name=".AdminNotification" />
-        <activity android:name=".ViewNotification"></activity>
+        <activity android:name=".AdminNotification"
+            android:theme="@style/AppTheme.nobar"/>
+        <activity android:name=".ViewNotification"
+            android:theme="@style/AppTheme.nobar"/>
     </application>
 
 </manifest>

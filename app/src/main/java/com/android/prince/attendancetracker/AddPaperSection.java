@@ -20,8 +20,6 @@ import org.w3c.dom.Text;
 public class AddPaperSection extends AppCompatActivity {
 
     TextInputEditText paperName;
-    TextInputEditText paperCode;
-    TextInputEditText paperCredit;
     TextInputEditText paperSem;
 
     Button addPaper;
@@ -45,7 +43,7 @@ public class AddPaperSection extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 paperNameStr = paperName.getText().toString();
-                paperSemStr = paperSem.getText().toString();
+                paperSemStr = paperSem.getText().toString().toUpperCase();
 
                 databaseReferenceToStuduent = FirebaseDatabase.getInstance().getReference().child("STUDENT").child("LIST").child(paperSemStr);
 

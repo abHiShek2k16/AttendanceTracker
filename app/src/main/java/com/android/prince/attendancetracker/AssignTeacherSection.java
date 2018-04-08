@@ -59,13 +59,13 @@ public class AssignTeacherSection extends AppCompatActivity implements AdapterVi
         semArray.add("Select Branch Code");
         paperNameArray.add("Select Paper");
 
-        semArray.add("2k16IT");
-        semArray.add("2k16CSE");
-        semArray.add("2k16EEE");
-        semArray.add("2k16ECE");
-        semArray.add("2k16MECH");
-        semArray.add("2k16CVL");
-        semArray.add("2k16PROD");
+        semArray.add("2K16IT");
+        semArray.add("2K16CSE");
+        semArray.add("2K16EEE");
+        semArray.add("2K16ECE");
+        semArray.add("2K16MECH");
+        semArray.add("2K16CVL");
+        semArray.add("2K16PROD");
 
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(AssignTeacherSection.this,android.R.layout.simple_expandable_list_item_1,semArray);
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

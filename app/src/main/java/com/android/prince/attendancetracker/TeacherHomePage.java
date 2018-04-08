@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.android.prince.attendancetracker.adapter.TeacherPaperAdapter;
 import com.android.prince.attendancetracker.listener.RecyclerItemClickListener;
@@ -35,6 +36,8 @@ public class TeacherHomePage extends AppCompatActivity {
 
     FloatingActionButton sendNotificationButton;
 
+    ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,8 @@ public class TeacherHomePage extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(TeacherHomePage.this));
 
         sendNotificationButton = (FloatingActionButton)findViewById(R.id.sendNotificationAtTeacherHomePage);
+
+        progressBar = (ProgressBar)findViewById(R.id.progressBarAtTeacherHomePage);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("TEACHER").child("ASSIGNED").child(userNameStr);
         new LoadNameAndSem().execute(databaseReference);
@@ -102,6 +107,7 @@ public class TeacherHomePage extends AppCompatActivity {
                     if(nameArray != null && semArray != null) {
                         TeacherPaperAdapter adapter = new TeacherPaperAdapter(TeacherHomePage.this, nameArray, semArray);
                         recyclerView.setAdapter(adapter);
+                        progressBar.setVisibility(View.GONE);
                     }
 
                 }

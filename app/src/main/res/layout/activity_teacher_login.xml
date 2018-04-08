@@ -11,7 +11,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:id="@+id/useless7">
 
         <ImageView
             android:layout_width="32dp"
@@ -45,8 +46,8 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="104dp"
-        android:layout_above="@id/userNameAtTeacherLogin"
-        android:layout_marginBottom="84dp"
+        android:layout_below="@id/useless7"
+        android:layout_marginTop="22dp"
         android:src="@drawable/icon"
         android:scaleType="fitCenter"/>
 

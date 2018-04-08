@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.prince.attendancetracker.adapter.DateAdapter;
@@ -39,6 +40,8 @@ public class ShowAttendance extends AppCompatActivity {
 
     ImageView attendance;
 
+    ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,8 @@ public class ShowAttendance extends AppCompatActivity {
         uId = intent.getStringExtra("UID");
         rollNo = intent.getStringExtra("ROLLNO");
         branchCode = intent.getStringExtra("BRANCH");
+
+        progressBar = (ProgressBar)findViewById(R.id.progressBarAtShowAttendance);
 
         textView.setText(myPaper);
 
@@ -95,6 +100,7 @@ public class ShowAttendance extends AppCompatActivity {
 
                     DateAdapter adapter = new DateAdapter(ShowAttendance.this,date,image);
                     recyclerView.setAdapter(adapter);
+                    progressBar.setVisibility(View.GONE);
                 }
 
                 @Override

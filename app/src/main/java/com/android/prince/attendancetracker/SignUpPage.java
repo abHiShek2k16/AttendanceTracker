@@ -74,7 +74,7 @@ public class SignUpPage extends AppCompatActivity {
 
                                 //  setting the data to total list of student
                                 databaseReference.child("TOTAL").child(uId).child("ROLLNO").setValue(rollNo.getText().toString());
-                                databaseReference.child("TOTAL").child(uId).child("BRANCHCODE").setValue(branch.getText().toString());
+                                databaseReference.child("TOTAL").child(uId).child("BRANCHCODE").setValue(branch.getText().toString().toUpperCase());
 
                                 startActivity(new Intent(SignUpPage.this, MainActivity.class));
                                 finish();
