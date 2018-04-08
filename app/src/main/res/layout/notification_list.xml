@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="12dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/showNotificationTextView"
+                android:text="hello this message is related to your colo hello this message is related to your colo hello this message is related to your colo hello this message is related to your colo hello this message is related to your colovhello this message is related to your colo hello this message is related to your colo hello this message is related to your colov "
+                android:paddingTop="22dp"
+                android:paddingLeft="22dp"
+                android:paddingBottom="16dp"
+                android:paddingRight="16dp"
+                android:textSize="22sp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textColor="@color/black"
+                android:ellipsize="start" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="DATE : 22/06/2018"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white"
+                android:textAlignment="textEnd"
+                android:paddingRight="16dp"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold"
+                android:id="@+id/dateViewAtNotice"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

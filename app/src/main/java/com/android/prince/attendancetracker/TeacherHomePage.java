@@ -3,6 +3,7 @@ package com.android.prince.attendancetracker;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,6 +33,8 @@ public class TeacherHomePage extends AppCompatActivity {
 
     String userNameStr;
 
+    FloatingActionButton sendNotificationButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +50,8 @@ public class TeacherHomePage extends AppCompatActivity {
         recyclerView = (RecyclerView)findViewById(R.id.recyclerViewAtTeacherHomePage);
         recyclerView.setLayoutManager(new LinearLayoutManager(TeacherHomePage.this));
 
+        sendNotificationButton = (FloatingActionButton)findViewById(R.id.sendNotificationAtTeacherHomePage);
+
         databaseReference = FirebaseDatabase.getInstance().getReference().child("TEACHER").child("ASSIGNED").child(userNameStr);
         new LoadNameAndSem().execute(databaseReference);
 
@@ -58,7 +63,6 @@ public class TeacherHomePage extends AppCompatActivity {
                         intent.putExtra("SUBJECT",nameArray.get(position));
                         intent.putExtra("NAME",userNameStr);
                         startActivity(intent);
-                        finish();
                     }
 
                     @Override public void onLongItemClick(View view, int position) {
@@ -66,6 +70,17 @@ public class TeacherHomePage extends AppCompatActivity {
                     }
                 })
         );
+
+        sendNotificationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TeacherHomePage.this,AdminNotification.class);
+                intent.putExtra("VALUE","2");
+                intent.putExtra("NAME",userNameStr);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
     }

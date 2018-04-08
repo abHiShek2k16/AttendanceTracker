@@ -31,7 +31,7 @@ public class SplashScreen extends AppCompatActivity {
                 @Override
                 public void run() {
                     if(!checkAdminclick) {
-                        if(FirebaseAuth.getInstance().getCurrentUser().getUid().equalsIgnoreCase("")){
+                        if(FirebaseAuth.getInstance().getCurrentUser() == null){
                             startActivity(new Intent(SplashScreen.this, MainActivity.class));
                             finish();
                         }else {
@@ -63,17 +63,14 @@ public class SplashScreen extends AppCompatActivity {
 
             dlgAlert.setMessage("unable to connect with server");
             dlgAlert.setTitle("Connectivity Error");
-            dlgAlert.setPositiveButton("OK", null);
+            dlgAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
             dlgAlert.setCancelable(false);
             dlgAlert.create().show();
 
-            dlgAlert.setPositiveButton("Ok",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            startActivity(new Intent(SplashScreen.this,SplashScreen.class));
-                            finish();
-                        }
-                    });
         }
     }
 

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.prince.attendancetracker.adapter.TeacherPaperAdapter;
@@ -43,6 +44,8 @@ public class UpdateAttendance extends AppCompatActivity {
     boolean[] flag = new boolean[60];
 
     DatePickerDialog datePickerDialog;
+
+    ImageView attendance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +104,18 @@ public class UpdateAttendance extends AppCompatActivity {
                 intent1.putExtra("NAME",name);
                 startActivity(intent1);
                 finish();
+            }
+        });
+
+        attendance = (ImageView)findViewById(R.id.renewAtUpdateAttendance);
+        attendance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UpdateAttendance.this,TeacherAutomatic.class);
+                intent.putExtra("BRANCH",sem);
+                intent.putExtra("SUBJECT",subject);
+                intent.putExtra("NAME",name);
+                startActivity(intent);
             }
         });
 

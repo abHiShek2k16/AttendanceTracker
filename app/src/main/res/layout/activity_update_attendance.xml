@@ -14,16 +14,32 @@
         android:layout_marginBottom="16dp"
         android:id="@+id/ToolBarAtUpdate">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textColor="@color/white"
-            android:text="Update Attendance"
-            android:paddingTop="8dp"
-            android:textStyle="normal"
-            android:textSize="22sp"
-            android:fontFamily="sans-serif"
-            android:textAllCaps="false" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:text="Update Attendance"
+                android:paddingTop="8dp"
+                android:textStyle="normal"
+                android:textSize="22sp"
+                android:fontFamily="sans-serif"
+                android:textAllCaps="false"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/renewAtUpdateAttendance"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_autorenew_white_24dp"/>
+
+        </LinearLayout>
 
     </android.support.v7.widget.Toolbar>
 

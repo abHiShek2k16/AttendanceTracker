@@ -2,11 +2,14 @@ package com.android.prince.attendancetracker;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.prince.attendancetracker.adapter.DateAdapter;
@@ -34,6 +37,8 @@ public class ShowAttendance extends AppCompatActivity {
 
     DatabaseReference databaseReferenceToStudentDetail;
 
+    ImageView attendance;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +59,20 @@ public class ShowAttendance extends AppCompatActivity {
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerViewAtShowAttendance);
         recyclerView.setLayoutManager(new LinearLayoutManager(ShowAttendance.this));
+
+        attendance = (ImageView)findViewById(R.id.renewAtShowAttendance);
+        attendance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ShowAttendance.this,StudentAutomatic.class);
+                intent.putExtra("PAPER",myPaper);
+                intent.putExtra("UID",uId);
+                intent.putExtra("ROLLNO",rollNo);
+                intent.putExtra("BRANCH",branchCode);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     public class LoadClassAtt extends AsyncTask<DatabaseReference,Void,Void> {

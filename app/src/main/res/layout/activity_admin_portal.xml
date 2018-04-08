@@ -5,89 +5,154 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.android.prince.attendancetracker.AdminPortal"
-    android:background="@color/colorPrimary">
+    android:background="@color/white">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:orientation="horizontal"
-        android:layout_marginBottom="16dp">
+        android:layout_height="match_parent"
+        android:id="@+id/adminPortalLayout"
+        android:background="@color/colorPrimary"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_navigate_before_white_24dp"
+                android:scaleType="centerInside"
+                android:layout_marginLeft="16dp"
+                android:id="@+id/backButtonAtActivityMain"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textAlignment="textEnd"
+                android:text="Admin Portal"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:layout_marginRight="22dp"
+                android:paddingTop="12dp"
+                android:fontFamily="sans-serif-smallcaps"/>
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"/>
+
+        </LinearLayout>
 
         <ImageView
-            android:layout_width="32dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_navigate_before_white_24dp"
-            android:scaleType="centerInside"
-            android:layout_marginLeft="16dp"
-            android:id="@+id/backButtonAtActivityMain"/>
-
-        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textAlignment="textEnd"
-            android:text="Admin Portal"
-            android:textColor="@color/white"
-            android:textSize="22sp"
+            android:layout_height="124dp"
+            android:layout_above="@id/teacherLoginButtonAtSplash"
+            android:src="@drawable/iconwhite"
+            android:layout_marginBottom="94dp"
+            android:scaleType="fitCenter"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/teacherLoginButtonAtSplash"
+            android:text="TEacher"
+            android:layout_above="@id/adminButtonAtSplash"
+            android:layout_marginBottom="22dp"
             android:layout_marginRight="22dp"
-            android:paddingTop="12dp"
-            android:fontFamily="sans-serif-smallcaps"/>
+            android:layout_marginLeft="22dp"
+            android:background="@drawable/backcolorwhite"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="22sp"
+            android:textAllCaps="true"
+            android:textAlignment="center"/>
 
-        <View
-            android:layout_width="4dp"
-            android:layout_height="match_parent"
-            android:background="@color/white"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/adminButtonAtSplash"
+            android:text="Admin"
+            android:layout_above="@id/imageATAdminPortal"
+            android:layout_marginBottom="48dp"
+            android:layout_marginRight="22dp"
+            android:layout_marginLeft="22dp"
+            android:background="@drawable/backcolorwhite"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="22sp"
+            android:textAllCaps="true"
+            android:textAlignment="center"/>
 
-    </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="84dp"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/white"
+            android:scaleType="fitXY"
+            android:id="@+id/imageATAdminPortal"/>
 
-    <ImageView
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="124dp"
-        android:layout_above="@id/teacherLoginButtonAtSplash"
-        android:src="@drawable/iconwhite"
-        android:layout_marginBottom="94dp"
-        android:scaleType="fitCenter"/>
+        android:layout_height="match_parent"
+        android:id="@+id/adminPassword"
+        android:background="@color/colorPrimary">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/teacherLoginButtonAtSplash"
-        android:text="TEacher"
-        android:layout_above="@id/adminButtonAtSplash"
-        android:layout_marginBottom="22dp"
-        android:layout_marginRight="22dp"
-        android:layout_marginLeft="22dp"
-        android:background="@drawable/backcolorwhite"
-        android:textColor="@color/colorPrimary"
-        android:fontFamily="sans-serif-condensed"
-        android:textSize="22sp"
-        android:textAllCaps="true"
-        android:textAlignment="center"/>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="364dp"
+            app:cardCornerRadius="22dp"
+            app:cardElevation="22dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true"
+            android:layout_centerInParent="true">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/adminButtonAtSplash"
-        android:text="Admin"
-        android:layout_above="@id/imageATAdminPortal"
-        android:layout_marginBottom="48dp"
-        android:layout_marginRight="22dp"
-        android:layout_marginLeft="22dp"
-        android:background="@drawable/backcolorwhite"
-        android:textColor="@color/colorPrimary"
-        android:fontFamily="sans-serif-condensed"
-        android:textSize="22sp"
-        android:textAllCaps="true"
-        android:textAlignment="center"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="84dp"
-        android:layout_alignParentBottom="true"
-        android:src="@drawable/white"
-        android:scaleType="fitXY"
-        android:id="@+id/imageATAdminPortal"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:background="@drawable/backeditext"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginLeft="22dp"
+                    android:hint="Enter your 6 Digit Code"
+                    android:paddingLeft="22dp"
+                    android:textColorHint="#9e9e9e"
+                    android:cursorVisible="false"
+                    android:id="@+id/adminPortalCode"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="16dp"
+                    android:textColor="@color/black"/>
 
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:text="Login"
+                    android:layout_alignParentBottom="true"
+                    android:id="@+id/adminLoginButton"
+                    android:textAllCaps="true"
+                    android:background="@drawable/backcolor"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textSize="22sp"
+                    android:elevation="16dp" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
 </RelativeLayout>

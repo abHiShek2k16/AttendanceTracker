@@ -55,6 +55,10 @@ public class AssignTeacherSection extends AppCompatActivity implements AdapterVi
         new LoadTeacherName().execute(databaseReferenceToTeacher);
         new LoadPaperName().execute(databaseReferenceToPaper);
 
+        teacherNameArray.add("Select Name of Teacher");
+        semArray.add("Select Branch Code");
+        paperNameArray.add("Select Paper");
+
         semArray.add("2k16IT");
         semArray.add("2k16CSE");
         semArray.add("2k16EEE");

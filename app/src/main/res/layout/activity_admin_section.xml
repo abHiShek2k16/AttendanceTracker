@@ -76,6 +76,21 @@
         android:layout_height="wrap_content"
         android:text="Assign Teacher"
         android:id="@+id/assignClassButtonAtAdminSection"
+        android:layout_above="@id/senNotificationButtonAtAdminSection"
+        android:layout_marginBottom="32dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginLeft="22dp"
+        android:background="@drawable/backcolor"
+        android:textAllCaps="true"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="22sp"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send Notification"
+        android:id="@+id/senNotificationButtonAtAdminSection"
         android:layout_above="@id/imageAtAdminSection"
         android:layout_marginBottom="74dp"
         android:layout_marginRight="22dp"

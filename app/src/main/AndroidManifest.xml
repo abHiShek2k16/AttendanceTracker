@@ -55,7 +55,17 @@
         <activity
             android:name=".ShowAttendance"
             android:theme="@style/AppTheme.nobar" />
-        <activity android:name=".AdminPortal"></activity>
+        <activity
+            android:name=".AdminPortal"
+            android:theme="@style/AppTheme.nobar" />
+        <activity
+            android:name=".StudentAutomatic"
+            android:theme="@style/AppTheme.nobar" />
+        <activity
+            android:name=".TeacherAutomatic"
+            android:theme="@style/AppTheme.nobar" />
+        <activity android:name=".AdminNotification" />
+        <activity android:name=".ViewNotification"></activity>
     </application>
 
 </manifest>

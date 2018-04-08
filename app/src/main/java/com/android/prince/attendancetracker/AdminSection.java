@@ -13,6 +13,7 @@ public class AdminSection extends AppCompatActivity {
     Button addTeacherButton;
     Button addPaperButton;
     Button assignTeacherButton;
+    Button sendNotificationButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class AdminSection extends AppCompatActivity {
         addTeacherButton = (Button)findViewById(R.id.addTeacherButtonAtAdminSection);
         addPaperButton = (Button)findViewById(R.id.addPaperButtonAtAdminSection);
         assignTeacherButton  = (Button)findViewById(R.id.assignClassButtonAtAdminSection);
+        sendNotificationButton = (Button)findViewById(R.id.senNotificationButtonAtAdminSection);
 
         addTeacherButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +43,16 @@ public class AdminSection extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(AdminSection.this,AssignTeacherSection.class));
+            }
+        });
+
+        sendNotificationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminSection.this,AdminNotification.class);
+                intent.putExtra("VALUE","1");
+                startActivity(intent);
+                finish();
             }
         });
     }

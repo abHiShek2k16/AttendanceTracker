@@ -129,14 +129,7 @@ public class StudentHomePage extends AppCompatActivity {
 
                     }else{
                        for(int i=0;i<myPaper.size();i++){
-
                            new LoadAttendance().execute(ref.child(myPaper.get(i)));
-
-                           try {
-                               Thread.sleep(10000);
-                           } catch (InterruptedException e) {
-                               e.printStackTrace();
-                           }
                        }
                     }
                 }
@@ -203,6 +196,11 @@ public class StudentHomePage extends AppCompatActivity {
         int id = item.getItemId();
 
         switch(id){
+            case R.id.notification:
+                Intent intent = new Intent(StudentHomePage.this,ViewNotification.class);
+                intent.putExtra("BRANCH",branchCode);
+                startActivity(intent);
+                break;
             case R.id.exit:
                 finish();
                 break;
