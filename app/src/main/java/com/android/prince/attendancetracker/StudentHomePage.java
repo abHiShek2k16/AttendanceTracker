@@ -174,9 +174,10 @@ public class StudentHomePage extends AppCompatActivity {
                         image.add(getResources().getDrawable(R.drawable.redcircler));
                     }
 
-                    StudentAttendanceAdapter adapter = new StudentAttendanceAdapter(StudentHomePage.this,myPaper,percent,image);
+                    StudentAttendanceAdapter adapter = new StudentAttendanceAdapter(StudentHomePage.this, myPaper, percent, image);
                     recyclerView.setAdapter(adapter);
                     progressBar.setVisibility(View.GONE);
+
                 }
 
                 @Override

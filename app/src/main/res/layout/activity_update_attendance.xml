@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.android.prince.attendancetracker.UpdateAttendance"
     android:background="@color/white">
 
@@ -44,24 +45,24 @@
     </android.support.v7.widget.Toolbar>
 
     <ProgressBar
-        android:layout_width="32dp"
+        android:layout_width="match_parent"
         android:layout_height="32dp"
         android:id="@+id/progressBarAtUpdateAttendance"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="58dp"/>
+        android:layout_marginTop="16dp"/>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recyclerViewAtUpdateAttandance"
-        android:layout_below="@id/ToolBarAtUpdate"/>
+        android:layout_weight="1"
+        android:id="@+id/recyclerViewAtUpdateAttandance"/>
 
     <TextView
-        android:layout_width="128dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/datePickerAtUpdateAttandance"
         android:layout_marginBottom="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:textAlignment="center"
         android:layout_centerHorizontal="true"
         android:backgroundTint="@color/white"
@@ -69,14 +70,14 @@
         android:textColorHint="#9e9e9e"
         android:textColor="@color/black"
         android:fontFamily="serif"
-        android:layout_above="@id/updateButtonAtUpdateAttendance"/>
+        android:text="DD_MM_YYYY"
+        android:layout_below="@id/recyclerViewAtUpdateAttandance" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:text="Update"
         android:id="@+id/updateButtonAtUpdateAttendance"
-        android:layout_alignParentBottom="true"
         android:textAllCaps="true"
         android:fontFamily="sans-serif-condensed"
         android:textSize="22sp"
@@ -85,4 +86,4 @@
         android:textAlignment="center"
         android:textStyle="normal" />
 
-</RelativeLayout>
+</LinearLayout>

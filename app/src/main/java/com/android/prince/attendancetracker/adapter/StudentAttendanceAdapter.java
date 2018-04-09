@@ -42,9 +42,11 @@ public class StudentAttendanceAdapter extends RecyclerView.Adapter<StudentAttend
     @Override
     public void onBindViewHolder(AttendanceCustomViewHolder holder, int position) {
 
-        holder.paperName.setText(paperName.get(position));
-        holder.percentage.setText("PERCENTAGE  :  "+percentage.get(position)+"%");
-        holder.image.setImageDrawable(image.get(position));
+        if(position<percentage.size()) {
+            holder.paperName.setText(paperName.get(position));
+            holder.percentage.setText("PERCENTAGE  :  " + percentage.get(position) + "%");
+            holder.image.setImageDrawable(image.get(position));
+        }
     }
 
     @Override

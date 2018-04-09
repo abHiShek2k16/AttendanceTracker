@@ -15,7 +15,6 @@ import org.w3c.dom.Text;
 public class AddTeacherSection extends AppCompatActivity {
 
     TextInputEditText teacherName;
-    TextInputEditText teacherCode;
     TextInputEditText teacherPassCode;
 
     Button addTeacher;
