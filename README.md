@@ -17,3 +17,7 @@ Some features of this App is :
 
 The teacher can take attendance by the two way in first method Teacher can take attendance manually by double tapping in the front of student roll no (All the student list will shown when teacher select the paper) and in second method Teacher can take attendance within a second by just clicking a button. 
 when the teacher click the button then it will generate a 6 digit code and student has to enter that code and student are made to present. That code is only valid till Teacher open that Activity if teacher close the activity then student will not able to make attendance.so this will **remove the proxy**.
+
+
+## License & copyright
+Licensed under the [MIT License](LICENSE).
